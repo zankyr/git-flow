@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop
+      - feature/**
 
 jobs:
   build:
@@ -22,5 +23,5 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Build with Maven
+      - name: Verify with Maven
         run: mvn --batch-mode --update-snapshots verify
