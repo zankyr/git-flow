@@ -24,7 +24,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Update project version
         run: |
-          mvn versions:set -DnewVersion=${GITHUB_REF##*/}-rc
+          mvn versions:set -DnewVersion=${GITHUB_REF##*/}-rc -DgenerateBackupPoms=false
           git config --global user.name 'GitHub action'
           git config --global user.mail 'github-action@noreply.github.com'
           git add .
