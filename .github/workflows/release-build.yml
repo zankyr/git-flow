@@ -23,4 +23,8 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Update project version
-        run: mvn versions:set -DnewVersion=${GITHUB_REF##*/}-rc
+        run: |
+          mvn versions:set -DnewVersion=${GITHUB_REF##*/}-rc
+          git add .
+          git commit -m 'Create snapshot [ci skip]'
+          git push
