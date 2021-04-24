@@ -42,5 +42,5 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Verify with Maven
-        run: mvn --batch-mode --update-snapshots verify
+      - name: Branch name
+        run: echo running on branch ${GITHUB_REF##*/}
