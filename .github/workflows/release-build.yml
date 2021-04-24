@@ -25,6 +25,8 @@ jobs:
       - name: Update project version
         run: |
           mvn versions:set -DnewVersion=${GITHUB_REF##*/}-rc
+          git config --global user.name 'GitHub action'
+          git config --global user.mail 'github-action@noreply.github.com'
           git add .
           git commit -m 'Create snapshot [ci skip]'
           git push
